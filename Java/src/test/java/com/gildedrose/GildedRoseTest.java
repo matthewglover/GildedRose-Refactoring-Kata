@@ -87,7 +87,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void backstagePassQualityIncreasesByTwoWhenSellInLessThanTen() {
+    public void backstagePassQualityIncreasesByTwoWhenSellInDecreasesToLessThanTen() {
         Item backstagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 10, 40);
         Item[] items = new Item[] {backstagePass};
         GildedRose app = new GildedRose(items);
@@ -98,7 +98,18 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void backstagePassQualityIncreasesByThreeWhenSellInLessThanFive() {
+    public void backstagePassQualityIncreasesByTwoWhenSellInDecreasesToFive() {
+        Item backstagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 6, 40);
+        Item[] items = new Item[] {backstagePass};
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(42, backstagePass.quality);
+    }
+
+    @Test
+    public void backstagePassQualityIncreasesByThreeWhenSellInIsDecreasesToLessThanFive() {
         Item backstagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 40);
         Item[] items = new Item[] {backstagePass};
         GildedRose app = new GildedRose(items);
