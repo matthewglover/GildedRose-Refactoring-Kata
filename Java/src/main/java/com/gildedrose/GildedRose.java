@@ -16,8 +16,8 @@ class GildedRose {
     private void updateItem(Item currentItem) {
         ItemWrapper wrapped = new ItemWrapper(currentItem);
 
-        if (wrapped.isNormalItem() && isQualityMoreThanZero(currentItem)) {
-            decreaseQualityByOne(currentItem);
+        if (wrapped.isNormalItem()) {
+            setQualityForNormalItem(currentItem);
         } else if (wrapped.isAgedBrie()) {
             setQualityForAgedBrie(currentItem);
         } else if (wrapped.isBackstagePass()) {
@@ -67,6 +67,12 @@ class GildedRose {
 
     private boolean isSellInLessThanTen(Item item) {
         return item.sellIn <= 10;
+    }
+
+    void setQualityForNormalItem(Item item) {
+        if (isQualityMoreThanZero(item)) {
+            decreaseQualityByOne(item);
+        }
     }
 
     void setQualityForAgedBrie(Item item) {
