@@ -17,7 +17,7 @@ class GildedRose {
         ItemWrapper wrapped = new ItemWrapper(currentItem);
 
         if (wrapped.isNormalItem()) {
-            setQualityForNormalItem(currentItem);
+           new NormalItemUpdater().updateQuality(currentItem);
         } else if (wrapped.isAgedBrie()) {
             setQualityForAgedBrie(currentItem);
         } else if (wrapped.isBackstagePass()) {
