@@ -48,12 +48,8 @@ class GildedRose {
         }
 
         if (hasItemExpired) {
-            if (!wrapped.isAgedBrie()) {
-                if (!wrapped.isAgedBrie() && !wrapped.isBackstagePass() && isQualityMoreThanZero && !wrapped.isSulfuras()) {
-                    decreaseQualityByOne(currentItem);
-                } else {
-                    setQualityToZero(currentItem);
-                }
+            if (wrapped.isNormalItem() && isQualityMoreThanZero) {
+                decreaseQualityByOne(currentItem);
             } else if (wrapped.isAgedBrie() && isQualityLessThanFifty) {
                 increaseQualityByOne(currentItem);
             } else {
