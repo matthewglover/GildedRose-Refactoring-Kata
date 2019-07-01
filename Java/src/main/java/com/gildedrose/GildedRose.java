@@ -17,7 +17,7 @@ class GildedRose {
         ItemWrapper wrapped = new ItemWrapper(currentItem);
 
         if (wrapped.isNormalItem()) {
-           new NormalItemUpdater().updateQuality(currentItem);
+           new NormalItemUpdater().updateItem(currentItem);
         } else if (wrapped.isAgedBrie()) {
             setQualityForAgedBrie(currentItem);
         } else if (wrapped.isBackstagePass()) {
@@ -65,17 +65,6 @@ class GildedRose {
         return item.sellIn <= 10;
     }
 
-    void setQualityForNormalItem(Item item) {
-        if (isQualityMoreThanZero(item)) {
-            decreaseQualityByOne(item);
-        }
-
-        if (hasItemExpired(item) && isQualityMoreThanZero(item)) {
-            decreaseQualityByOne(item);
-        }
-
-        item.sellIn -= 1;
-    }
 
     void setQualityForAgedBrie(Item item) {
         if (isQualityLessThanFifty(item)) {

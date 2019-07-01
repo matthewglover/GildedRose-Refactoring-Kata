@@ -1,7 +1,7 @@
 package com.gildedrose;
 
 public abstract class ItemUpdater {
-    public final void updateQuality(Item item) {
+    public final void updateItem(Item item) {
         setQualityForValidItem(item);
         setQualityForExpiredItem(item);
         decreaseSellIn(item);
@@ -9,5 +9,7 @@ public abstract class ItemUpdater {
 
     void setQualityForValidItem(Item item) {}
     void setQualityForExpiredItem(Item item) {}
-    void decreaseSellIn(Item item) {}
+    void decreaseSellIn(Item item) {
+        item.sellIn -= 1;
+    }
 }

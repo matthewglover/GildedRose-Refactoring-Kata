@@ -16,11 +16,6 @@ public class NormalItemUpdater extends ItemUpdater {
         }
     }
 
-    @Override
-    void decreaseSellIn(Item item) {
-        item.sellIn -= 1;
-    }
-
     private boolean isQualityMoreThanZero(Item item) {
         return item.quality > 0;
     }
