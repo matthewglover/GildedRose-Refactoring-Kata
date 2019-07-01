@@ -19,10 +19,8 @@ class GildedRose {
         boolean isSellInLessThanTen = currentItem.sellIn <= 10;
 
 
-        if (wrapped.isNormalItem()) {
-            if (isQualityMoreThanZero(currentItem)) {
-                decreaseQualityByOne(currentItem);
-            }
+        if (wrapped.isNormalItem() && isQualityMoreThanZero(currentItem)) {
+            decreaseQualityByOne(currentItem);
         } else if (wrapped.isSulfuras()) {
             // Do nothing if it's sulfuras
         } else {
@@ -30,16 +28,12 @@ class GildedRose {
                 increaseQualityByOne(currentItem);
 
                 if (wrapped.isBackstagePass()) {
-                    if (isSellInLessThanTen) {
-                        if (isQualityLessThanFifty(currentItem)) {
+                    if (isSellInLessThanTen && isQualityLessThanFifty(currentItem)) {
                             increaseQualityByOne(currentItem);
-                        }
                     }
 
-                    if (isSellInLessThanFive) {
-                        if (isQualityLessThanFifty(currentItem)) {
-                            increaseQualityByOne(currentItem);
-                        }
+                    if (isSellInLessThanFive && isQualityLessThanFifty(currentItem)) {
+                        increaseQualityByOne(currentItem);
                     }
                 }
             }
@@ -60,12 +54,6 @@ class GildedRose {
 
     private void setQualityToZero(Item item) {
         item.quality = 0;
-    }
-
-    private void decreaseSellInByOne(ItemWrapper wrapped, Item item) {
-        if (!wrapped.isSulfuras()) {
-            item.sellIn -= 1;
-        }
     }
 
     private boolean hasItemExpired(Item item) {
@@ -89,6 +77,12 @@ class GildedRose {
             } else {
                 setQualityToZero(item);
             }
+        }
+    }
+
+    private void decreaseSellInByOne(ItemWrapper wrapped, Item item) {
+        if (!wrapped.isSulfuras()) {
+            item.sellIn -= 1;
         }
     }
 }
