@@ -38,6 +38,14 @@ class GildedRose {
         item.quality += 1;
     }
 
+    private void increaseQualityByTwo(Item item) {
+        item.quality += 2;
+    }
+
+    private void increaseQualityByThree(Item item) {
+        item.quality += 3;
+    }
+
     private void decreaseQualityByOne(Item item) {
         item.quality -= 1;
     }
@@ -74,13 +82,9 @@ class GildedRose {
 
     void setQualityForBackStagePass(Item item) {
         if (isSellInLessThanTen(item) && !isSellInLessThanFive(item) && isQualityLessThanFifty(item)) {
-            increaseQualityByOne(item);
-            increaseQualityByOne(item);
-
+            increaseQualityByTwo(item);
         } else if (isSellInLessThanFive(item) && isQualityLessThanFifty(item)) {
-            increaseQualityByOne(item);
-            increaseQualityByOne(item);
-            increaseQualityByOne(item);
+           increaseQualityByThree(item);
         }
         else {
             increaseQualityByOne(item);
