@@ -17,28 +17,27 @@ class GildedRose {
         ItemWrapper wrapped = new ItemWrapper(currentItem);
         boolean isSellInLessThanFive = currentItem.sellIn <= 5;
         boolean isSellInLessThanTen = currentItem.sellIn <= 10;
-        boolean isQualityMoreThanZero = currentItem.quality > 0;
-        boolean isQualityLessThanFifty = currentItem.quality < 50;
+
 
         if (wrapped.isNormalItem()) {
-            if (isQualityMoreThanZero) {
+            if (isQualityMoreThanZero(currentItem)) {
                 decreaseQualityByOne(currentItem);
             }
         } else if (wrapped.isSulfuras()) {
             // Do nothing if it's sulfuras
         } else {
-            if (isQualityLessThanFifty) {
+            if (isQualityLessThanFifty(currentItem)) {
                 increaseQualityByOne(currentItem);
 
                 if (wrapped.isBackstagePass()) {
                     if (isSellInLessThanTen) {
-                        if (isQualityLessThanFifty) {
+                        if (isQualityLessThanFifty(currentItem)) {
                             increaseQualityByOne(currentItem);
                         }
                     }
 
                     if (isSellInLessThanFive) {
-                        if (isQualityLessThanFifty) {
+                        if (isQualityLessThanFifty(currentItem)) {
                             increaseQualityByOne(currentItem);
                         }
                     }
@@ -47,9 +46,9 @@ class GildedRose {
         }
 
         if (hasItemExpired(currentItem)) {
-            if (wrapped.isNormalItem() && isQualityMoreThanZero) {
+            if (wrapped.isNormalItem() && isQualityMoreThanZero(currentItem)) {
                 decreaseQualityByOne(currentItem);
-            } else if (wrapped.isAgedBrie() && isQualityLessThanFifty) {
+            } else if (wrapped.isAgedBrie() && isQualityLessThanFifty(currentItem)) {
                 increaseQualityByOne(currentItem);
             } else {
                 setQualityToZero(currentItem);
@@ -81,4 +80,11 @@ class GildedRose {
         return item.sellIn <= 0;
     }
 
+    private boolean isQualityMoreThanZero(Item item) {
+        return item.quality > 0;
+    }
+
+    private boolean isQualityLessThanFifty(Item item) {
+        return item.quality < 50;
+    }
 }
