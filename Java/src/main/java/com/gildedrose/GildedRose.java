@@ -21,18 +21,17 @@ class GildedRose {
         } else if (wrapped.isSulfuras()) {
             // Do nothing if it's sulfuras
         } else {
-            if (isQualityLessThanFifty(currentItem)) {
-                increaseQualityByOne(currentItem);
-
-                if (wrapped.isBackstagePass()) {
-                    setQualityForBackStagePass(currentItem);
-                }
+            if (wrapped.isAgedBrie()) {
+                setQualityForAgedBrie(currentItem);
+            } else if (wrapped.isBackstagePass()) {
+                setQualityForBackStagePass(currentItem);
             }
         }
 
         setQualityForExpiredItem(wrapped, currentItem);
 
         decreaseSellInByOne(wrapped, currentItem);
+
     }
 
     private void increaseQualityByOne(Item item) {
@@ -67,12 +66,23 @@ class GildedRose {
         return item.sellIn <= 10;
     }
 
-    void setQualityForBackStagePass(Item item) {
-        if (isSellInLessThanTen(item) && isQualityLessThanFifty(item)) {
+    void setQualityForAgedBrie(Item item) {
+        if (isQualityLessThanFifty(item)) {
             increaseQualityByOne(item);
         }
+    }
 
-        if (isSellInLessThanFive(item) && isQualityLessThanFifty(item)) {
+    void setQualityForBackStagePass(Item item) {
+        if (isSellInLessThanTen(item) && !isSellInLessThanFive(item) && isQualityLessThanFifty(item)) {
+            increaseQualityByOne(item);
+            increaseQualityByOne(item);
+
+        } else if (isSellInLessThanFive(item) && isQualityLessThanFifty(item)) {
+            increaseQualityByOne(item);
+            increaseQualityByOne(item);
+            increaseQualityByOne(item);
+        }
+        else {
             increaseQualityByOne(item);
         }
     }
