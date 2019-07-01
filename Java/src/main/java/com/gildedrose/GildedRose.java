@@ -29,18 +29,18 @@ class GildedRose {
             // Do nothing if it's sulfuras
         } else{
             if (isQualityLessThanFifty) {
-                currentItem.quality = currentItem.quality + 1;
+                increaseQualityByOne(currentItem);
 
                 if (wrapped.isBackstagePass()) {
                     if (isSellInLessThanTen) {
                         if (isQualityLessThanFifty) {
-                            currentItem.quality = currentItem.quality + 1;
+                            increaseQualityByOne(currentItem);
                         }
                     }
 
                     if (isSellInLessThanFive) {
                         if (isQualityLessThanFifty) {
-                            currentItem.quality = currentItem.quality + 1;
+                            increaseQualityByOne(currentItem);
                         }
                     }
                 }
@@ -60,7 +60,7 @@ class GildedRose {
                 }
             } else {
                 if (isQualityLessThanFifty) {
-                    currentItem.quality = currentItem.quality + 1;
+                    increaseQualityByOne(currentItem);
                 }
             }
         }
@@ -68,6 +68,10 @@ class GildedRose {
         if (!wrapped.isSulfuras()) {
             currentItem.sellIn = currentItem.sellIn - 1;
         }
+    }
+
+    private void increaseQualityByOne(Item item) {
+        item.quality += 1;
     }
 
 }
