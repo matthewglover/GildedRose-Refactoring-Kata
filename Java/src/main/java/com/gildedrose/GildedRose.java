@@ -22,6 +22,8 @@ class GildedRose {
             new AgedBrieItemUpdater().updateItem(currentItem);
         } else if (wrapped.isBackstagePass()) {
             new BackstagePassItemUpdater().updateItem(currentItem);
+        } else if (wrapped.isSulfuras()) {
+            new SulfurasItemUpdater().updateItem(currentItem);
         }
     }
 
