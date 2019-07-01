@@ -66,7 +66,7 @@ class GildedRose {
         }
 
         if (!wrapped.isSulfuras()) {
-            currentItem.sellIn = currentItem.sellIn - 1;
+           decreaseSellInByOne(currentItem);
         }
     }
 
@@ -82,4 +82,7 @@ class GildedRose {
         item.quality = 0;
     }
 
+    private void decreaseSellInByOne(Item item) {
+        item.sellIn -= 1;
+    }
 }
