@@ -24,6 +24,8 @@ class GildedRose {
             new BackstagePassItemUpdater().updateItem(currentItem);
         } else if (wrapped.isSulfuras()) {
             new SulfurasItemUpdater().updateItem(currentItem);
+        } else if (wrapped.isConjuredItem()) {
+            new ConjuredItemUpdater().updateItem(currentItem);
         }
     }
 }
