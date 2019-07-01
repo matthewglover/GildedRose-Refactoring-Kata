@@ -16,9 +16,10 @@ class GildedRose {
     private void updateItem(Item currentItem) {
         ItemWrapper wrapped = new ItemWrapper(currentItem);
         boolean hasItemExpired = currentItem.sellIn <= 0;
+        boolean isQualityMoreThanZero = currentItem.quality > 0;
 
         if (wrapped.isNormalItem()) {
-            if (currentItem.quality > 0) {
+            if (isQualityMoreThanZero) {
                     currentItem.quality = currentItem.quality - 1;
                 }
         } else if (wrapped.isSulfuras()) {
@@ -48,7 +49,7 @@ class GildedRose {
         if (hasItemExpired) {
             if (!wrapped.isAgedBrie()) {
                 if (!wrapped.isBackstagePass()) {
-                    if (currentItem.quality > 0) {
+                    if (isQualityMoreThanZero) {
                         if (!wrapped.isSulfuras()) {
                             currentItem.quality = currentItem.quality - 1;
                         }
