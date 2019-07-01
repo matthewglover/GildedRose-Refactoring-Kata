@@ -3,8 +3,7 @@ package com.gildedrose;
 public class BackstagePassItemUpdater extends ItemUpdater {
     @Override
     void setQualityForValidItem(Item item) {
-        if (isSellInLessThanTen(item) && !isSellInLessThanFive(item)
-                && isQualityLessThanFifty(item)) {
+        if (isSellInLessThanTenAndMoreThanFive(item) && isQualityLessThanFifty(item)) {
             increaseQualityByTwo(item);
         } else if (isSellInLessThanFive(item) && isQualityLessThanFifty(item)) {
             increaseQualityByThree(item);
@@ -50,5 +49,9 @@ public class BackstagePassItemUpdater extends ItemUpdater {
 
     private boolean isSellInLessThanTen(Item item) {
         return item.sellIn <= 10;
+    }
+
+    private boolean isSellInLessThanTenAndMoreThanFive(Item item) {
+        return isSellInLessThanTen(item) && !isSellInLessThanFive(item);
     }
 }
