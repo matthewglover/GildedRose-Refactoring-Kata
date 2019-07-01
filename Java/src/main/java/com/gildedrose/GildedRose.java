@@ -17,6 +17,7 @@ class GildedRose {
         ItemWrapper wrapped = new ItemWrapper(currentItem);
         boolean hasItemExpired = currentItem.sellIn <= 0;
         boolean isQualityMoreThanZero = currentItem.quality > 0;
+        boolean isQualityLessThanZero = currentItem.quality < 50;
 
         if (wrapped.isNormalItem()) {
             if (isQualityMoreThanZero) {
@@ -25,26 +26,24 @@ class GildedRose {
         } else if (wrapped.isSulfuras()) {
             // Do nothing if it's sulfuras
         } else{
-            if (currentItem.quality < 50) {
+            if (isQualityLessThanZero) {
                 currentItem.quality = currentItem.quality + 1;
 
                 if (wrapped.isBackstagePass()) {
                     if (currentItem.sellIn <= 10) {
-                        if (currentItem.quality < 50) {
+                        if (isQualityLessThanZero) {
                             currentItem.quality = currentItem.quality + 1;
                         }
                     }
 
                     if (currentItem.sellIn <= 5) {
-                        if (currentItem.quality < 50) {
+                        if (isQualityLessThanZero) {
                             currentItem.quality = currentItem.quality + 1;
                         }
                     }
                 }
             }
         }
-
-
 
         if (hasItemExpired) {
             if (!wrapped.isAgedBrie()) {
@@ -58,7 +57,7 @@ class GildedRose {
                     currentItem.quality = 0;
                 }
             } else {
-                if (currentItem.quality < 50) {
+                if (isQualityLessThanZero) {
                     currentItem.quality = currentItem.quality + 1;
                 }
             }
