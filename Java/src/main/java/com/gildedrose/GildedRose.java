@@ -19,7 +19,7 @@ class GildedRose {
         if (wrapped.isNormalItem()) {
            new NormalItemUpdater().updateItem(currentItem);
         } else if (wrapped.isAgedBrie()) {
-            setQualityForAgedBrie(currentItem);
+            new AgedBrieItemUpdater().updateItem(currentItem);
         } else if (wrapped.isBackstagePass()) {
             setQualityForBackStagePass(currentItem);
         }
@@ -63,19 +63,6 @@ class GildedRose {
 
     private boolean isSellInLessThanTen(Item item) {
         return item.sellIn <= 10;
-    }
-
-
-    void setQualityForAgedBrie(Item item) {
-        if (isQualityLessThanFifty(item)) {
-            increaseQualityByOne(item);
-        }
-
-        if (hasItemExpired(item) && isQualityLessThanFifty(item)) {
-            increaseQualityByOne(item);
-        }
-
-        item.sellIn -= 1;
     }
 
     void setQualityForBackStagePass(Item item) {
