@@ -45,4 +45,16 @@ public class ItemWrapperTest {
         assertFalse(wrapped.isSulfuras());
         assertFalse(wrapped.isAgedBrie());
     }
+
+    @Test
+    public void isConjuredItemIfConjured() {
+        Item item = new Item("Conjured", 1, 1);
+        ItemWrapper wrapped = new ItemWrapper(item);
+
+        assertTrue(wrapped.isConjuredItem());
+        assertFalse(wrapped.isBackstagePass());
+        assertFalse(wrapped.isSulfuras());
+        assertFalse(wrapped.isAgedBrie());
+        assertFalse(wrapped.isNormalItem());
+    }
 }
