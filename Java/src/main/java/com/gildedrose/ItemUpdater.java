@@ -9,7 +9,5 @@ public abstract class ItemUpdater {
 
     void setQualityForValidItem(Item item) {}
     void setQualityForExpiredItem(Item item) {}
-    void decreaseSellIn(Item item) {
-        item.sellIn -= 1;
-    }
+    void decreaseSellIn(Item item) {}
 }
