@@ -21,7 +21,7 @@ class GildedRose {
         } else if (wrapped.isAgedBrie()) {
             new AgedBrieItemUpdater().updateItem(currentItem);
         } else if (wrapped.isBackstagePass()) {
-            setQualityForBackStagePass(currentItem);
+            new BackstagePassItemUpdater().updateItem(currentItem);
         }
     }
 
@@ -63,21 +63,5 @@ class GildedRose {
 
     private boolean isSellInLessThanTen(Item item) {
         return item.sellIn <= 10;
-    }
-
-    void setQualityForBackStagePass(Item item) {
-        if (isSellInLessThanTen(item) && !isSellInLessThanFive(item) && isQualityLessThanFifty(item)) {
-            increaseQualityByTwo(item);
-        } else if (isSellInLessThanFive(item) && isQualityLessThanFifty(item)) {
-            increaseQualityByThree(item);
-        } else {
-            increaseQualityByOne(item);
-        }
-
-        if (hasItemExpired(item)) {
-            setQualityToZero(item);
-        }
-
-        item.sellIn -= 1;
     }
 }
