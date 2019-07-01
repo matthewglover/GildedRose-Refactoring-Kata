@@ -56,7 +56,7 @@ class GildedRose {
                         }
                     }
                 } else {
-                    currentItem.quality = 0;
+                    setQualityToZero(currentItem);
                 }
             } else {
                 if (isQualityLessThanFifty) {
@@ -76,6 +76,10 @@ class GildedRose {
 
     private void decreaseQualityByOne(Item item) {
         item.quality -= 1;
+    }
+
+    private void setQualityToZero(Item item) {
+        item.quality = 0;
     }
 
 }
