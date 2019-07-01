@@ -23,7 +23,7 @@ class GildedRose {
 
         if (wrapped.isNormalItem()) {
             if (isQualityMoreThanZero) {
-                    currentItem.quality = currentItem.quality - 1;
+                decreaseQualityByOne(currentItem);
                 }
         } else if (wrapped.isSulfuras()) {
             // Do nothing if it's sulfuras
@@ -52,7 +52,7 @@ class GildedRose {
                 if (!wrapped.isBackstagePass()) {
                     if (isQualityMoreThanZero) {
                         if (!wrapped.isSulfuras()) {
-                            currentItem.quality = currentItem.quality - 1;
+                            decreaseQualityByOne(currentItem);
                         }
                     }
                 } else {
@@ -72,6 +72,10 @@ class GildedRose {
 
     private void increaseQualityByOne(Item item) {
         item.quality += 1;
+    }
+
+    private void decreaseQualityByOne(Item item) {
+        item.quality -= 1;
     }
 
 }
