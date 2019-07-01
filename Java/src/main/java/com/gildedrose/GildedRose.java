@@ -15,9 +15,6 @@ class GildedRose {
 
     private void updateItem(Item currentItem) {
         ItemWrapper wrapped = new ItemWrapper(currentItem);
-        boolean isSellInLessThanFive = currentItem.sellIn <= 5;
-        boolean isSellInLessThanTen = currentItem.sellIn <= 10;
-
 
         if (wrapped.isNormalItem() && isQualityMoreThanZero(currentItem)) {
             decreaseQualityByOne(currentItem);
@@ -28,13 +25,7 @@ class GildedRose {
                 increaseQualityByOne(currentItem);
 
                 if (wrapped.isBackstagePass()) {
-                    if (isSellInLessThanTen && isQualityLessThanFifty(currentItem)) {
-                            increaseQualityByOne(currentItem);
-                    }
-
-                    if (isSellInLessThanFive && isQualityLessThanFifty(currentItem)) {
-                        increaseQualityByOne(currentItem);
-                    }
+                    setQualityForBackStagePass(currentItem);
                 }
             }
         }
@@ -66,6 +57,24 @@ class GildedRose {
 
     private boolean isQualityLessThanFifty(Item item) {
         return item.quality < 50;
+    }
+
+    private boolean isSellInLessThanFive(Item item) {
+        return item.sellIn <= 5;
+    }
+
+    private boolean isSellInLessThanTen(Item item) {
+        return item.sellIn <= 10;
+    }
+
+    void setQualityForBackStagePass(Item item) {
+        if (isSellInLessThanTen(item) && isQualityLessThanFifty(item)) {
+            increaseQualityByOne(item);
+        }
+
+        if (isSellInLessThanFive(item) && isQualityLessThanFifty(item)) {
+            increaseQualityByOne(item);
+        }
     }
 
     private void setQualityForExpiredItem(ItemWrapper wrapped, Item item) {
