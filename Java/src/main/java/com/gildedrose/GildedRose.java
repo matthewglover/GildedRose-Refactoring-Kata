@@ -24,10 +24,10 @@ class GildedRose {
         if (wrapped.isNormalItem()) {
             if (isQualityMoreThanZero) {
                 decreaseQualityByOne(currentItem);
-                }
+            }
         } else if (wrapped.isSulfuras()) {
             // Do nothing if it's sulfuras
-        } else{
+        } else {
             if (isQualityLessThanFifty) {
                 increaseQualityByOne(currentItem);
 
@@ -49,19 +49,15 @@ class GildedRose {
 
         if (hasItemExpired) {
             if (!wrapped.isAgedBrie()) {
-                if (!wrapped.isBackstagePass()) {
-                    if (isQualityMoreThanZero) {
-                        if (!wrapped.isSulfuras()) {
-                            decreaseQualityByOne(currentItem);
-                        }
-                    }
+                if (!wrapped.isAgedBrie() && !wrapped.isBackstagePass() && isQualityMoreThanZero && !wrapped.isSulfuras()) {
+                    decreaseQualityByOne(currentItem);
                 } else {
                     setQualityToZero(currentItem);
                 }
+            } else if (wrapped.isAgedBrie() && isQualityLessThanFifty) {
+                increaseQualityByOne(currentItem);
             } else {
-                if (isQualityLessThanFifty) {
-                    increaseQualityByOne(currentItem);
-                }
+                setQualityToZero(currentItem);
             }
         }
 
