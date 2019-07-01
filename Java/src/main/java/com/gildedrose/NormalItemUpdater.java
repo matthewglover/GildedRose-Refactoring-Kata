@@ -11,7 +11,7 @@ public class NormalItemUpdater extends ItemUpdater {
 
     @Override
     void setQualityForExpiredItem(Item item) {
-        if (isQualityMoreThanZero(item)) {
+        if (hasItemExpired(item) && isQualityMoreThanZero(item)) {
             decreaseQualityByOne(item);
         }
     }
@@ -27,5 +27,9 @@ public class NormalItemUpdater extends ItemUpdater {
 
     private void decreaseQualityByOne(Item item) {
         item.quality -= 1;
+    }
+
+    private boolean hasItemExpired(Item item) {
+        return item.sellIn <= 0;
     }
 }
