@@ -45,15 +45,7 @@ class GildedRose {
             }
         }
 
-        if (hasItemExpired(currentItem)) {
-            if (wrapped.isNormalItem() && isQualityMoreThanZero(currentItem)) {
-                decreaseQualityByOne(currentItem);
-            } else if (wrapped.isAgedBrie() && isQualityLessThanFifty(currentItem)) {
-                increaseQualityByOne(currentItem);
-            } else {
-                setQualityToZero(currentItem);
-            }
-        }
+        setQualityForExpiredItem(wrapped, currentItem);
 
         decreaseSellInByOne(wrapped, currentItem);
     }
@@ -86,5 +78,17 @@ class GildedRose {
 
     private boolean isQualityLessThanFifty(Item item) {
         return item.quality < 50;
+    }
+
+    private void setQualityForExpiredItem(ItemWrapper wrapped, Item item) {
+        if (hasItemExpired(item)) {
+            if (wrapped.isNormalItem() && isQualityMoreThanZero(item)) {
+                decreaseQualityByOne(item);
+            } else if (wrapped.isAgedBrie() && isQualityLessThanFifty(item)) {
+                increaseQualityByOne(item);
+            } else {
+                setQualityToZero(item);
+            }
+        }
     }
 }
