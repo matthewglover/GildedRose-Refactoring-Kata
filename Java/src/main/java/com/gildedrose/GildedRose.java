@@ -24,8 +24,6 @@ class GildedRose {
             setQualityForBackStagePass(currentItem);
         }
 
-        setQualityForExpiredItem(wrapped, currentItem);
-
         decreaseSellInByOne(wrapped, currentItem);
     }
 
@@ -73,10 +71,18 @@ class GildedRose {
         if (isQualityMoreThanZero(item)) {
             decreaseQualityByOne(item);
         }
+
+        if (hasItemExpired(item) && isQualityMoreThanZero(item)) {
+            decreaseQualityByOne(item);
+        }
     }
 
     void setQualityForAgedBrie(Item item) {
         if (isQualityLessThanFifty(item)) {
+            increaseQualityByOne(item);
+        }
+
+        if (hasItemExpired(item) && isQualityLessThanFifty(item)) {
             increaseQualityByOne(item);
         }
     }
@@ -89,19 +95,12 @@ class GildedRose {
         } else {
             increaseQualityByOne(item);
         }
-    }
 
-    private void setQualityForExpiredItem(ItemWrapper wrapped, Item item) {
         if (hasItemExpired(item)) {
-            if (wrapped.isNormalItem() && isQualityMoreThanZero(item)) {
-                decreaseQualityByOne(item);
-            } else if (wrapped.isAgedBrie() && isQualityLessThanFifty(item)) {
-                increaseQualityByOne(item);
-            } else {
-                setQualityToZero(item);
-            }
+            setQualityToZero(item);
         }
     }
+
 
     private void decreaseSellInByOne(ItemWrapper wrapped, Item item) {
         if (!wrapped.isSulfuras()) {
