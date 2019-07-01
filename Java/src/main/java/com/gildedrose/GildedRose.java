@@ -13,19 +13,19 @@ class GildedRose {
         }
     }
 
-    private void updateItem(Item currentItem) {
-        ItemWrapper wrapped = new ItemWrapper(currentItem);
+    private void updateItem(Item item) {
+        ItemWrapper wrapped = new ItemWrapper(item);
 
         if (wrapped.isNormalItem()) {
-           new NormalItemUpdater().updateItem(currentItem);
+           new NormalItemUpdater().updateItem(item);
         } else if (wrapped.isAgedBrie()) {
-            new AgedBrieItemUpdater().updateItem(currentItem);
+            new AgedBrieItemUpdater().updateItem(item);
         } else if (wrapped.isBackstagePass()) {
-            new BackstagePassItemUpdater().updateItem(currentItem);
+            new BackstagePassItemUpdater().updateItem(item);
         } else if (wrapped.isSulfuras()) {
-            new SulfurasItemUpdater().updateItem(currentItem);
+            new SulfurasItemUpdater().updateItem(item);
         } else if (wrapped.isConjuredItem()) {
-            new ConjuredItemUpdater().updateItem(currentItem);
+            new ConjuredItemUpdater().updateItem(item);
         }
     }
 }
