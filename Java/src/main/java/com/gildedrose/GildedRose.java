@@ -16,6 +16,7 @@ class GildedRose {
     private void updateItem(Item currentItem) {
         ItemWrapper wrapped = new ItemWrapper(currentItem);
         boolean hasItemExpired = currentItem.sellIn <= 0;
+        boolean isSellInLessThanTen = currentItem.sellIn <= 10;
         boolean isQualityMoreThanZero = currentItem.quality > 0;
         boolean isQualityLessThanZero = currentItem.quality < 50;
 
@@ -30,7 +31,7 @@ class GildedRose {
                 currentItem.quality = currentItem.quality + 1;
 
                 if (wrapped.isBackstagePass()) {
-                    if (currentItem.sellIn <= 10) {
+                    if (isSellInLessThanTen) {
                         if (isQualityLessThanZero) {
                             currentItem.quality = currentItem.quality + 1;
                         }
