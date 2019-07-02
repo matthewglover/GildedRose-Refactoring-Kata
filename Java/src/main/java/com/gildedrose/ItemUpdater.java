@@ -1,6 +1,8 @@
 package com.gildedrose;
 
 public abstract class ItemUpdater {
+    public final int SELL_IN_VALUE_ZER0 = 0;
+
     public final void updateItem(Item item) {
         setQualityForValidItem(item);
         setQualityForExpiredItem(item);
@@ -34,7 +36,7 @@ public abstract class ItemUpdater {
     }
 
     final boolean hasItemExpired(Item item) {
-        return item.sellIn <= 0;
+        return item.sellIn <= SELL_IN_VALUE_ZER0;
     }
 
     final boolean isQualityMoreThanZero(Item item) {
