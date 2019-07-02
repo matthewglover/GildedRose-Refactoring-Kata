@@ -1,7 +1,9 @@
 package com.gildedrose;
 
 public abstract class ItemUpdater {
-    public final int SELL_IN_VALUE_ZER0 = 0;
+    private static final int SELL_IN_VALUE_ZERO = 0;
+    private static final int QUALITY_VALUE_MIN = 0;
+    private static final int QUALITY_VALUE_MAX = 50;
 
     public final void updateItem(Item item) {
         setQualityForValidItem(item);
@@ -24,15 +26,15 @@ public abstract class ItemUpdater {
     }
 
     final boolean hasItemExpired(Item item) {
-        return item.sellIn <= SELL_IN_VALUE_ZER0;
+        return item.sellIn <= SELL_IN_VALUE_ZERO;
     }
 
     final boolean isQualityMoreThanZero(Item item) {
-        return item.quality > 0;
+        return item.quality > QUALITY_VALUE_MIN;
     }
 
     final boolean isQualityLessThanFifty(Item item) {
-        return item.quality < 50;
+        return item.quality < QUALITY_VALUE_MAX;
     }
 
     final void setQualityToValue(Item item, int value) {
