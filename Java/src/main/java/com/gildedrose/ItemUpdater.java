@@ -15,16 +15,8 @@ public abstract class ItemUpdater {
         item.sellIn -= 1;
     }
 
-    final void increaseQualityByOne(Item item) {
-        item.quality += 1;
-    }
-
-    final void increaseQualityByTwo(Item item) {
-        item.quality += 2;
-    }
-
-    final void increaseQualityByThree(Item item) {
-        item.quality += 3;
+    final void increaseQualityByValue(Item item, int value) {
+        item.quality += value;
     }
 
     final void decreaseQualityByOne(Item item) {
