@@ -19,12 +19,8 @@ public abstract class ItemUpdater {
         item.quality += value;
     }
 
-    final void decreaseQualityByOne(Item item) {
-        item.quality -= 1;
-    }
-
-    final void decreaseQualityByTwo(Item item) {
-        item.quality -= 2;
+    final void decreaseQualityByValue(Item item, int value) {
+        item.quality -= value;
     }
 
     final boolean hasItemExpired(Item item) {
