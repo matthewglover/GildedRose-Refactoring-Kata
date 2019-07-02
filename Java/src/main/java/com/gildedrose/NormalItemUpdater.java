@@ -15,16 +15,4 @@ public class NormalItemUpdater extends ItemUpdater {
             decreaseQualityByOne(item);
         }
     }
-
-    private boolean isQualityMoreThanZero(Item item) {
-        return item.quality > 0;
-    }
-
-    private void decreaseQualityByOne(Item item) {
-        item.quality -= 1;
-    }
-
-    private boolean hasItemExpired(Item item) {
-        return item.sellIn <= 0;
-    }
 }

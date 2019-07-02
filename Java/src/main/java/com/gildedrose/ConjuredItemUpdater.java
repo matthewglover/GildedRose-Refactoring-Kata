@@ -14,16 +14,4 @@ public class ConjuredItemUpdater extends ItemUpdater {
             decreaseQualityByTwo(item);
         }
     }
-
-    private boolean isQualityMoreThanZero(Item item) {
-        return item.quality > 0;
-    }
-
-    private void decreaseQualityByTwo(Item item) {
-        item.quality -= 2;
-    }
-
-    private boolean hasItemExpired(Item item) {
-        return item.sellIn <= 0;
-    }
 }

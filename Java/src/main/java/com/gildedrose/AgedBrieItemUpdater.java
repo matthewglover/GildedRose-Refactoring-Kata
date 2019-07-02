@@ -14,16 +14,4 @@ public class AgedBrieItemUpdater extends ItemUpdater{
             increaseQualityByOne(item);
         }
     }
-
-    private boolean isQualityLessThanFifty(Item item) {
-        return item.quality < 50;
-    }
-
-    private void increaseQualityByOne(Item item) {
-        item.quality += 1;
-    }
-
-    private boolean hasItemExpired(Item item) {
-        return item.sellIn <= 0;
-    }
 }

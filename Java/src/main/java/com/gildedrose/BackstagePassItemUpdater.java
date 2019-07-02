@@ -18,40 +18,4 @@ public class BackstagePassItemUpdater extends ItemUpdater {
             setQualityToZero(item);
         }
     }
-
-    private boolean hasItemExpired(Item item) {
-        return item.sellIn <= 0;
-    }
-
-    private void setQualityToZero(Item item) {
-        item.quality = 0;
-    }
-
-    private void increaseQualityByOne(Item item) {
-        item.quality += 1;
-    }
-
-    private void increaseQualityByTwo(Item item) {
-        item.quality += 2;
-    }
-
-    private void increaseQualityByThree(Item item) {
-        item.quality += 3;
-    }
-
-    private boolean isQualityLessThanFifty(Item item) {
-        return item.quality < 50;
-    }
-
-    private boolean isSellInLessThanFive(Item item) {
-        return item.sellIn <= 5;
-    }
-
-    private boolean isSellInLessThanTen(Item item) {
-        return item.sellIn <= 10;
-    }
-
-    private boolean isSellInLessThanTenAndMoreThanFive(Item item) {
-        return isSellInLessThanTen(item) && !isSellInLessThanFive(item);
-    }
 }
