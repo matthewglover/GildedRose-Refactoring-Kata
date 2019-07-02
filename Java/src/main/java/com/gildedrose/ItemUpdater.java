@@ -49,15 +49,12 @@ public abstract class ItemUpdater {
         item.quality = value;
     }
 
-    final boolean isSellInLessThanFive(Item item) {
-        return item.sellIn <= 5;
+    final boolean isSellInLessThanOrEqualToValue(Item item, int value) {
+        return item.sellIn <= value;
     }
 
-    final boolean isSellInLessThanTen(Item item) {
-        return item.sellIn <= 10;
-    }
-
-    final boolean isSellInLessThanTenAndMoreThanFive(Item item) {
-        return isSellInLessThanTen(item) && !isSellInLessThanFive(item);
+    final boolean isSellInBetweenMinAndMaxValues(Item item, int minValue, int maxValue) {
+        return !isSellInLessThanOrEqualToValue(item, minValue)
+                && isSellInLessThanOrEqualToValue(item, maxValue);
     }
 }
