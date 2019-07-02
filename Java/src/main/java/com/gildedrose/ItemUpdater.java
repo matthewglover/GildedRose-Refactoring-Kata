@@ -2,6 +2,7 @@ package com.gildedrose;
 
 abstract class ItemUpdater {
     private static final int SELL_IN_VALUE_ZERO = 0;
+    private static final int SELL_IN_VALUE_ONE = 1;
     private static final int QUALITY_VALUE_MIN = 0;
     private static final int QUALITY_VALUE_MAX = 50;
 
@@ -14,7 +15,7 @@ abstract class ItemUpdater {
     void setQualityForValidItem(Item item) {}
     void setQualityForExpiredItem(Item item) {}
     void decreaseSellIn(Item item) {
-        item.sellIn -= 1;
+        item.sellIn -= SELL_IN_VALUE_ONE;
     }
 
     final void increaseQualityByValue(Item item, int value) {
@@ -29,11 +30,11 @@ abstract class ItemUpdater {
         return item.sellIn <= SELL_IN_VALUE_ZERO;
     }
 
-    final boolean isQualityMoreThanZero(Item item) {
+    final boolean isQualityMoreThanMinValue(Item item) {
         return item.quality > QUALITY_VALUE_MIN;
     }
 
-    final boolean isQualityLessThanFifty(Item item) {
+    final boolean isQualityLessThanMaxValue(Item item) {
         return item.quality < QUALITY_VALUE_MAX;
     }
 

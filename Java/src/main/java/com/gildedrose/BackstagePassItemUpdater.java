@@ -12,10 +12,10 @@ class BackstagePassItemUpdater extends ItemUpdater {
     @Override
     void setQualityForValidItem(Item item) {
         if (isSellInBetweenMinAndMaxValues(item, SELL_IN_VALUE_FIVE, SELL_IN_VALUE_TEN)
-                && isQualityLessThanFifty(item)) {
+                && isQualityLessThanMaxValue(item)) {
             increaseQualityByValue(item, QUALITY_VALUE_TWO);
         } else if
-        (isSellInLessThanOrEqualToValue(item, SELL_IN_VALUE_FIVE) && isQualityLessThanFifty(item)) {
+        (isSellInLessThanOrEqualToValue(item, SELL_IN_VALUE_FIVE) && isQualityLessThanMaxValue(item)) {
             increaseQualityByValue(item, QUALITY_VALUE_THREE);
         } else {
             increaseQualityByValue(item, QUALITY_VALUE_ONE);
