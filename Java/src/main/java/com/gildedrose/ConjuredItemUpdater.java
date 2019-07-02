@@ -1,7 +1,8 @@
 package com.gildedrose;
 
-public class ConjuredItemUpdater extends ItemUpdater {
-    private final int QUALITY_VALUE_TWO = 2;
+class ConjuredItemUpdater extends ItemUpdater {
+    private static final int QUALITY_VALUE_TWO = 2;
+    
     @Override
     void setQualityForValidItem(Item item) {
         if (isQualityMoreThanZero(item)) {

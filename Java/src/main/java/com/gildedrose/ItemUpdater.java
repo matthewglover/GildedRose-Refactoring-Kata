@@ -1,11 +1,11 @@
 package com.gildedrose;
 
-public abstract class ItemUpdater {
+abstract class ItemUpdater {
     private static final int SELL_IN_VALUE_ZERO = 0;
     private static final int QUALITY_VALUE_MIN = 0;
     private static final int QUALITY_VALUE_MAX = 50;
 
-    public final void updateItem(Item item) {
+    final void updateItem(Item item) {
         setQualityForValidItem(item);
         setQualityForExpiredItem(item);
         decreaseSellIn(item);

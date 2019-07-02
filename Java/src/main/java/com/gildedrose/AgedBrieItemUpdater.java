@@ -1,7 +1,7 @@
 package com.gildedrose;
 
-public class AgedBrieItemUpdater extends ItemUpdater {
-    private final int QUALITY_VALUE_ONE = 1;
+class AgedBrieItemUpdater extends ItemUpdater {
+    private static final int QUALITY_VALUE_ONE = 1;
 
     @Override
     void setQualityForValidItem(Item item) {

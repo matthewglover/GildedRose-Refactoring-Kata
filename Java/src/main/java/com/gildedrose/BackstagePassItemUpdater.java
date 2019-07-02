@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class BackstagePassItemUpdater extends ItemUpdater {
+class BackstagePassItemUpdater extends ItemUpdater {
     private static final int EXPIRED_QUALITY_VALUE = 0;
     private static final int SELL_IN_VALUE_FIVE = 5;
     private static final int SELL_IN_VALUE_TEN = 10;
