@@ -13,10 +13,6 @@ public abstract class ItemUpdater {
         item.sellIn -= 1;
     }
 
-    final boolean isQualityLessThanFifty(Item item) {
-        return item.quality < 50;
-    }
-
     final void increaseQualityByOne(Item item) {
         item.quality += 1;
     }
@@ -45,8 +41,12 @@ public abstract class ItemUpdater {
         return item.quality > 0;
     }
 
-    final void setQualityToZero(Item item) {
-        item.quality = 0;
+    final boolean isQualityLessThanFifty(Item item) {
+        return item.quality < 50;
+    }
+
+    final void setQualityToValue(Item item, int value) {
+        item.quality = value;
     }
 
     final boolean isSellInLessThanFive(Item item) {
