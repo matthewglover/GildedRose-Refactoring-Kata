@@ -13,59 +13,19 @@ class GildedRose {
         }
     }
 
-    private void updateItem(Item currentItem) {
-        ItemWrapper wrapped = new ItemWrapper(currentItem);
-        boolean hasItemExpired = currentItem.sellIn <= 0;
+    private void updateItem(Item item) {
+        ItemWrapper wrapped = new ItemWrapper(item);
 
         if (wrapped.isNormalItem()) {
-            if (currentItem.quality > 0) {
-                    currentItem.quality = currentItem.quality - 1;
-                }
+           new NormalItemUpdater().updateItem(item);
+        } else if (wrapped.isAgedBrie()) {
+            new AgedBrieItemUpdater().updateItem(item);
+        } else if (wrapped.isBackstagePass()) {
+            new BackstagePassItemUpdater().updateItem(item);
         } else if (wrapped.isSulfuras()) {
-            // Do nothing if it's sulfuras
-        } else{
-            if (currentItem.quality < 50) {
-                currentItem.quality = currentItem.quality + 1;
-
-                if (wrapped.isBackstagePass()) {
-                    if (currentItem.sellIn <= 10) {
-                        if (currentItem.quality < 50) {
-                            currentItem.quality = currentItem.quality + 1;
-                        }
-                    }
-
-                    if (currentItem.sellIn <= 5) {
-                        if (currentItem.quality < 50) {
-                            currentItem.quality = currentItem.quality + 1;
-                        }
-                    }
-                }
-            }
-        }
-
-
-
-        if (hasItemExpired) {
-            if (!wrapped.isAgedBrie()) {
-                if (!wrapped.isBackstagePass()) {
-                    if (currentItem.quality > 0) {
-                        if (!wrapped.isSulfuras()) {
-                            currentItem.quality = currentItem.quality - 1;
-                        }
-                    }
-                } else {
-                    currentItem.quality = 0;
-                }
-            } else {
-                if (currentItem.quality < 50) {
-                    currentItem.quality = currentItem.quality + 1;
-                }
-            }
-        }
-
-        if (!wrapped.isSulfuras()) {
-            currentItem.sellIn = currentItem.sellIn - 1;
+            new SulfurasItemUpdater().updateItem(item);
+        } else if (wrapped.isConjuredItem()) {
+            new ConjuredItemUpdater().updateItem(item);
         }
     }
-
 }

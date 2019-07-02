@@ -19,7 +19,11 @@ class ItemWrapper {
         return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
     }
 
+    public boolean isConjuredItem() {
+        return item.name.equals("Conjured");
+    }
+
     public boolean isNormalItem() {
-        return !isAgedBrie() && !isBackstagePass() && !isSulfuras();
+        return !isAgedBrie() && !isBackstagePass() && !isSulfuras() && !isConjuredItem();
     }
 }
