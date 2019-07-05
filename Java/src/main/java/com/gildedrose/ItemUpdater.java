@@ -13,12 +13,10 @@ abstract class ItemUpdater {
 
     abstract void setQualityForExpiredItem();
 
+    abstract void updateQuality();
+
     final void update() {
-        if (isExpired()) {
-            setQualityForExpiredItem();
-        } else {
-            setQualityForValidItem();
-        }
+        updateQuality();
         decreaseSellIn();
     }
 
@@ -46,7 +44,7 @@ abstract class ItemUpdater {
         return item.sellIn <= n;
     }
 
-    private boolean isExpired() {
+    final boolean isExpired() {
         return item.sellIn <= 0;
     }
 }

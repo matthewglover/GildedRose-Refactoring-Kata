@@ -21,4 +21,13 @@ class BackstagePassItemUpdater extends ItemUpdater {
     void setQualityForExpiredItem() {
         setQuality(0);
     }
+
+    @Override
+    void updateQuality() {
+        if (isExpired()) {
+            setQualityForExpiredItem();
+        } else {
+            setQualityForValidItem();
+        }
+    }
 }

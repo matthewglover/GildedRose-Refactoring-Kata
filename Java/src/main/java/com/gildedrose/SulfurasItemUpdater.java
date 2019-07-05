@@ -18,4 +18,13 @@ public class SulfurasItemUpdater extends ItemUpdater {
     @Override
     void decreaseSellIn() {
     }
+
+    @Override
+    void updateQuality() {
+        if (isExpired()) {
+            setQualityForExpiredItem();
+        } else {
+            setQualityForValidItem();
+        }
+    }
 }

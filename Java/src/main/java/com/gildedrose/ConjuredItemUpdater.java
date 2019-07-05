@@ -15,4 +15,13 @@ class ConjuredItemUpdater extends ItemUpdater {
     void setQualityForExpiredItem() {
         decreaseQualityBy(4);
     }
+
+    @Override
+    void updateQuality() {
+        if (isExpired()) {
+            setQualityForExpiredItem();
+        } else {
+            setQualityForValidItem();
+        }
+    }
 }

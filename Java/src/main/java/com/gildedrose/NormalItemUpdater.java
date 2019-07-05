@@ -15,4 +15,13 @@ class NormalItemUpdater extends ItemUpdater {
     void setQualityForExpiredItem() {
         decreaseQualityBy(2);
     }
+
+    @Override
+    void updateQuality() {
+        if (isExpired()) {
+            setQualityForExpiredItem();
+        } else {
+            setQualityForValidItem();
+        }
+    }
 }
