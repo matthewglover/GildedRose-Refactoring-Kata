@@ -16,9 +16,9 @@ class BackstagePassItemUpdater extends ItemUpdater {
     }
 
     private void setQualityForValidItem() {
-        if (isSellInLessThanOrEqualTo(5)) {
+        if (sellIn() <= 5) {
             increaseQualityBy(3);
-        } else if (isSellInLessThanOrEqualTo(10)) {
+        } else if (sellIn() <= 10) {
             increaseQualityBy(2);
         } else {
             increaseQualityBy(1);

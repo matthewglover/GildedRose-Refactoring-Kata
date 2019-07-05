@@ -36,8 +36,8 @@ abstract class ItemUpdater {
         item.quality = quality;
     }
 
-    final boolean isSellInLessThanOrEqualTo(int n) {
-        return item.sellIn <= n;
+    final int sellIn() {
+        return item.sellIn;
     }
 
     final boolean isExpired() {
