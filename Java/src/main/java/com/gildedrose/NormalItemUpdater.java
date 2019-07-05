@@ -13,6 +13,6 @@ class NormalItemUpdater extends ItemUpdater {
 
     @Override
     void setQualityForExpiredItem() {
-        decreaseQualityBy(1);
+        decreaseQualityBy(2);
     }
 }

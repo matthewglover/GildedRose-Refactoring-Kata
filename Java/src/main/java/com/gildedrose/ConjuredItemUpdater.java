@@ -13,6 +13,6 @@ class ConjuredItemUpdater extends ItemUpdater {
 
     @Override
     void setQualityForExpiredItem() {
-        decreaseQualityBy(2);
+        decreaseQualityBy(4);
     }
 }
