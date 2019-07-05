@@ -9,15 +9,15 @@ class ConjuredItemUpdater extends ItemUpdater {
 
     @Override
     void setQualityForValidItem() {
-        if (isQualityMoreThanMinValue(item)) {
-            decreaseQualityByValue(item, QUALITY_VALUE_TWO);
+        if (isQualityMoreThanMinValue()) {
+            decreaseQualityByValue(QUALITY_VALUE_TWO);
         }
     }
 
     @Override
-    void setQualityForExpiredItem(Item item) {
-        if (hasItemExpired(item) && isQualityMoreThanMinValue(item)) {
-           decreaseQualityByValue(item, QUALITY_VALUE_TWO);
+    void setQualityForExpiredItem() {
+        if (hasItemExpired() && isQualityMoreThanMinValue()) {
+           decreaseQualityByValue(QUALITY_VALUE_TWO);
         }
     }
 }

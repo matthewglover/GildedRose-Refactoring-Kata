@@ -9,15 +9,15 @@ class AgedBrieItemUpdater extends ItemUpdater {
 
     @Override
     void setQualityForValidItem() {
-        if (isQualityLessThanMaxValue(item)) {
-            increaseQualityByValue(item, QUALITY_VALUE_ONE);
+        if (isQualityLessThanMaxValue()) {
+            increaseQualityByValue(QUALITY_VALUE_ONE);
         }
     }
 
     @Override
-    void setQualityForExpiredItem(Item item) {
-        if (hasItemExpired(item) && isQualityLessThanMaxValue(item)) {
-            increaseQualityByValue(item, QUALITY_VALUE_ONE);
+    void setQualityForExpiredItem() {
+        if (hasItemExpired() && isQualityLessThanMaxValue()) {
+            increaseQualityByValue(QUALITY_VALUE_ONE);
         }
     }
 }

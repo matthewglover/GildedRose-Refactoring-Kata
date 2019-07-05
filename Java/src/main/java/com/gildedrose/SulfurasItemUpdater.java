@@ -7,6 +7,6 @@ public class SulfurasItemUpdater extends ItemUpdater {
     }
 
     @Override
-    void decreaseSellIn(Item item) {
+    void decreaseSellIn() {
     }
 }

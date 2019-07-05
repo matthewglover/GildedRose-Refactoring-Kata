@@ -13,46 +13,46 @@ abstract class ItemUpdater {
 
     final void updateItem() {
         setQualityForValidItem();
-        setQualityForExpiredItem(item);
-        decreaseSellIn(item);
+        setQualityForExpiredItem();
+        decreaseSellIn();
     }
 
     void setQualityForValidItem() {}
-    void setQualityForExpiredItem(Item item) {}
-    void decreaseSellIn(Item item) {
+    void setQualityForExpiredItem() {}
+    void decreaseSellIn() {
         item.sellIn -= SELL_IN_VALUE_ONE;
     }
 
-    final void increaseQualityByValue(Item item, int value) {
+    final void increaseQualityByValue(int value) {
         item.quality += value;
     }
 
-    final void decreaseQualityByValue(Item item, int value) {
+    final void decreaseQualityByValue(int value) {
         item.quality -= value;
     }
 
-    final boolean hasItemExpired(Item item) {
+    final boolean hasItemExpired() {
         return item.sellIn <= SELL_IN_VALUE_ZERO;
     }
 
-    final boolean isQualityMoreThanMinValue(Item item) {
+    final boolean isQualityMoreThanMinValue() {
         return item.quality > QUALITY_VALUE_MIN;
     }
 
-    final boolean isQualityLessThanMaxValue(Item item) {
+    final boolean isQualityLessThanMaxValue() {
         return item.quality < QUALITY_VALUE_MAX;
     }
 
-    final void setQualityToValue(Item item, int value) {
+    final void setQualityToValue(int value) {
         item.quality = value;
     }
 
-    final boolean isSellInLessThanOrEqualToValue(Item item, int value) {
+    final boolean isSellInLessThanOrEqualToValue(int value) {
         return item.sellIn <= value;
     }
 
-    final boolean isSellInBetweenMinAndMaxValues(Item item, int minValue, int maxValue) {
-        return !isSellInLessThanOrEqualToValue(item, minValue)
-                && isSellInLessThanOrEqualToValue(item, maxValue);
+    final boolean isSellInBetweenMinAndMaxValues(int minValue, int maxValue) {
+        return !isSellInLessThanOrEqualToValue(minValue)
+                && isSellInLessThanOrEqualToValue(maxValue);
     }
 }

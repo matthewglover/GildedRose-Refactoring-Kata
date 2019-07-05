@@ -14,28 +14,28 @@ class BackstagePassItemUpdater extends ItemUpdater {
 
     @Override
     void setQualityForValidItem() {
-        if (ifSellInIsLessThanOrEqualToTen(item)) {
-            increaseQualityByValue(item, QUALITY_VALUE_TWO);
+        if (ifSellInIsLessThanOrEqualToTen()) {
+            increaseQualityByValue(QUALITY_VALUE_TWO);
         } else if
-        (ifSellInIsLessThanOrEqualToFive(item)) {
-            increaseQualityByValue(item, QUALITY_VALUE_THREE);
+        (ifSellInIsLessThanOrEqualToFive()) {
+            increaseQualityByValue(QUALITY_VALUE_THREE);
         } else {
-            increaseQualityByValue(item, QUALITY_VALUE_ONE);
+            increaseQualityByValue(QUALITY_VALUE_ONE);
         }
     }
 
     @Override
-    void setQualityForExpiredItem(Item item) {
-        if (hasItemExpired(item)) {
-            setQualityToValue(item, EXPIRED_QUALITY_VALUE);
+    void setQualityForExpiredItem() {
+        if (hasItemExpired()) {
+            setQualityToValue(EXPIRED_QUALITY_VALUE);
         }
     }
 
-    private boolean ifSellInIsLessThanOrEqualToTen(Item item) {
-        return isSellInBetweenMinAndMaxValues(item, SELL_IN_VALUE_FIVE, SELL_IN_VALUE_TEN) && isQualityLessThanMaxValue(item);
+    private boolean ifSellInIsLessThanOrEqualToTen() {
+        return isSellInBetweenMinAndMaxValues(SELL_IN_VALUE_FIVE, SELL_IN_VALUE_TEN) && isQualityLessThanMaxValue();
     }
 
-    private boolean ifSellInIsLessThanOrEqualToFive(Item item) {
-        return isSellInLessThanOrEqualToValue(item, SELL_IN_VALUE_FIVE) && isQualityLessThanMaxValue(item);
+    private boolean ifSellInIsLessThanOrEqualToFive() {
+        return isSellInLessThanOrEqualToValue(SELL_IN_VALUE_FIVE) && isQualityLessThanMaxValue();
     }
 }
