@@ -1,29 +1,19 @@
 package com.gildedrose;
 
-public class AgedBrieItemUpdater extends ItemUpdater{
+class AgedBrieItemUpdater extends ItemUpdater {
+    private static final int QUALITY_VALUE_ONE = 1;
+
     @Override
     void setQualityForValidItem(Item item) {
-        if (isQualityLessThanFifty(item)) {
-            increaseQualityByOne(item);
+        if (isQualityLessThanMaxValue(item)) {
+            increaseQualityByValue(item, QUALITY_VALUE_ONE);
         }
     }
 
     @Override
     void setQualityForExpiredItem(Item item) {
-        if (hasItemExpired(item) && isQualityLessThanFifty(item)) {
-            increaseQualityByOne(item);
+        if (hasItemExpired(item) && isQualityLessThanMaxValue(item)) {
+            increaseQualityByValue(item, QUALITY_VALUE_ONE);
         }
-    }
-
-    private boolean isQualityLessThanFifty(Item item) {
-        return item.quality < 50;
-    }
-
-    private void increaseQualityByOne(Item item) {
-        item.quality += 1;
-    }
-
-    private boolean hasItemExpired(Item item) {
-        return item.sellIn <= 0;
     }
 }

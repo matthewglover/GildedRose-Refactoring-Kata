@@ -1,30 +1,19 @@
 package com.gildedrose;
 
-public class NormalItemUpdater extends ItemUpdater {
+class NormalItemUpdater extends ItemUpdater {
+    private static final int QUALITY_VALUE_ONE = 1;
 
     @Override
     void setQualityForValidItem(Item item) {
-        if (isQualityMoreThanZero(item)) {
-            decreaseQualityByOne(item);
+        if (isQualityMoreThanMinValue(item)) {
+            decreaseQualityByValue(item, QUALITY_VALUE_ONE);
         }
     }
 
     @Override
     void setQualityForExpiredItem(Item item) {
-        if (hasItemExpired(item) && isQualityMoreThanZero(item)) {
-            decreaseQualityByOne(item);
+        if (hasItemExpired(item) && isQualityMoreThanMinValue(item)) {
+            decreaseQualityByValue(item, QUALITY_VALUE_ONE);
         }
-    }
-
-    private boolean isQualityMoreThanZero(Item item) {
-        return item.quality > 0;
-    }
-
-    private void decreaseQualityByOne(Item item) {
-        item.quality -= 1;
-    }
-
-    private boolean hasItemExpired(Item item) {
-        return item.sellIn <= 0;
     }
 }

@@ -1,57 +1,38 @@
 package com.gildedrose;
 
-public class BackstagePassItemUpdater extends ItemUpdater {
+class BackstagePassItemUpdater extends ItemUpdater {
+    private static final int EXPIRED_QUALITY_VALUE = 0;
+    private static final int SELL_IN_VALUE_FIVE = 5;
+    private static final int SELL_IN_VALUE_TEN = 10;
+    private static final int QUALITY_VALUE_ONE = 1;
+    private static final int QUALITY_VALUE_TWO = 2;
+    private static final int QUALITY_VALUE_THREE = 3;
+
+
     @Override
     void setQualityForValidItem(Item item) {
-        if (isSellInLessThanTenAndMoreThanFive(item) && isQualityLessThanFifty(item)) {
-            increaseQualityByTwo(item);
-        } else if (isSellInLessThanFive(item) && isQualityLessThanFifty(item)) {
-            increaseQualityByThree(item);
+        if (ifSellInIsLessThanOrEqualToTen(item)) {
+            increaseQualityByValue(item, QUALITY_VALUE_TWO);
+        } else if
+        (ifSellInIsLessThanOrEqualToFive(item)) {
+            increaseQualityByValue(item, QUALITY_VALUE_THREE);
         } else {
-            increaseQualityByOne(item);
+            increaseQualityByValue(item, QUALITY_VALUE_ONE);
         }
     }
 
     @Override
     void setQualityForExpiredItem(Item item) {
         if (hasItemExpired(item)) {
-            setQualityToZero(item);
+            setQualityToValue(item, EXPIRED_QUALITY_VALUE);
         }
     }
 
-    private boolean hasItemExpired(Item item) {
-        return item.sellIn <= 0;
+    private boolean ifSellInIsLessThanOrEqualToTen(Item item) {
+        return isSellInBetweenMinAndMaxValues(item, SELL_IN_VALUE_FIVE, SELL_IN_VALUE_TEN) && isQualityLessThanMaxValue(item);
     }
 
-    private void setQualityToZero(Item item) {
-        item.quality = 0;
-    }
-
-    private void increaseQualityByOne(Item item) {
-        item.quality += 1;
-    }
-
-    private void increaseQualityByTwo(Item item) {
-        item.quality += 2;
-    }
-
-    private void increaseQualityByThree(Item item) {
-        item.quality += 3;
-    }
-
-    private boolean isQualityLessThanFifty(Item item) {
-        return item.quality < 50;
-    }
-
-    private boolean isSellInLessThanFive(Item item) {
-        return item.sellIn <= 5;
-    }
-
-    private boolean isSellInLessThanTen(Item item) {
-        return item.sellIn <= 10;
-    }
-
-    private boolean isSellInLessThanTenAndMoreThanFive(Item item) {
-        return isSellInLessThanTen(item) && !isSellInLessThanFive(item);
+    private boolean ifSellInIsLessThanOrEqualToFive(Item item) {
+        return isSellInLessThanOrEqualToValue(item, SELL_IN_VALUE_FIVE) && isQualityLessThanMaxValue(item);
     }
 }

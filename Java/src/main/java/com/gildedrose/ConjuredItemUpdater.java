@@ -1,29 +1,19 @@
 package com.gildedrose;
 
-public class ConjuredItemUpdater extends ItemUpdater {
+class ConjuredItemUpdater extends ItemUpdater {
+    private static final int QUALITY_VALUE_TWO = 2;
+
     @Override
     void setQualityForValidItem(Item item) {
-        if (isQualityMoreThanZero(item)) {
-            decreaseQualityByTwo(item);
+        if (isQualityMoreThanMinValue(item)) {
+            decreaseQualityByValue(item, QUALITY_VALUE_TWO);
         }
     }
 
     @Override
     void setQualityForExpiredItem(Item item) {
-        if (hasItemExpired(item) && isQualityMoreThanZero(item)) {
-            decreaseQualityByTwo(item);
+        if (hasItemExpired(item) && isQualityMoreThanMinValue(item)) {
+           decreaseQualityByValue(item, QUALITY_VALUE_TWO);
         }
-    }
-
-    private boolean isQualityMoreThanZero(Item item) {
-        return item.quality > 0;
-    }
-
-    private void decreaseQualityByTwo(Item item) {
-        item.quality -= 2;
-    }
-
-    private boolean hasItemExpired(Item item) {
-        return item.sellIn <= 0;
     }
 }
