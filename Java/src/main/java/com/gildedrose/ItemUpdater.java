@@ -41,6 +41,10 @@ abstract class ItemUpdater {
         return item.quality < MAX_QUALITY;
     }
 
+    private boolean isQualityAboveMin() {
+        return item.quality > MIN_QUALITY;
+    }
+
     final void setQuality(int quality) {
         item.quality = quality;
     }
@@ -56,9 +60,5 @@ abstract class ItemUpdater {
 
     private boolean isExpired() {
         return item.sellIn <= 0;
-    }
-
-    private boolean isQualityAboveMin() {
-        return item.quality > MIN_QUALITY;
     }
 }
