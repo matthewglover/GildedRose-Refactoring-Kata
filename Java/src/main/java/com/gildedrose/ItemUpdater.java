@@ -13,13 +13,12 @@ abstract class ItemUpdater {
 
     abstract void setQualityForValidItem();
 
+    abstract void setQualityForExpiredItem();
+
     final void updateItem() {
         setQualityForValidItem();
         setQualityForExpiredItem();
         decreaseSellIn();
-    }
-
-    void setQualityForExpiredItem() {
     }
 
     void decreaseSellIn() {
