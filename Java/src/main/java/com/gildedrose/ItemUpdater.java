@@ -26,23 +26,15 @@ abstract class ItemUpdater {
     }
 
     final void increaseQualityBy(int n) {
-        if (isQualityBelowMax()) {
+        if (item.quality < MAX_QUALITY) {
             item.quality += n;
         }
     }
 
     final void decreaseQualityBy(int n) {
-        if (isQualityAboveMin()) {
+        if (item.quality > MIN_QUALITY) {
             item.quality -= n;
         }
-    }
-
-    final boolean isQualityBelowMax() {
-        return item.quality < MAX_QUALITY;
-    }
-
-    private boolean isQualityAboveMin() {
-        return item.quality > MIN_QUALITY;
     }
 
     final void setQuality(int quality) {
@@ -51,11 +43,6 @@ abstract class ItemUpdater {
 
     final boolean isSellInLessThanOrEqualTo(int n) {
         return item.sellIn <= n;
-    }
-
-    final boolean isSellInWithin(int min, int max) {
-        return !isSellInLessThanOrEqualTo(min)
-                && isSellInLessThanOrEqualTo(max);
     }
 
     private boolean isExpired() {
