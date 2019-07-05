@@ -1,7 +1,6 @@
 package com.gildedrose;
 
 class ConjuredItemUpdater extends ItemUpdater {
-    private static final int QUALITY_VALUE_TWO = 2;
 
     public ConjuredItemUpdater(Item item) {
         super(item);
@@ -9,11 +8,11 @@ class ConjuredItemUpdater extends ItemUpdater {
 
     @Override
     void setQualityForValidItem() {
-        decreaseQualityBy(QUALITY_VALUE_TWO);
+        decreaseQualityBy(2);
     }
 
     @Override
     void setQualityForExpiredItem() {
-        decreaseQualityBy(QUALITY_VALUE_TWO);
+        decreaseQualityBy(2);
     }
 }
