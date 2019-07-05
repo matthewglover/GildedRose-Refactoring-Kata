@@ -13,7 +13,7 @@ class BackstagePassItemUpdater extends ItemUpdater {
     }
 
     @Override
-    void setQualityForValidItem(Item item) {
+    void setQualityForValidItem() {
         if (ifSellInIsLessThanOrEqualToTen(item)) {
             increaseQualityByValue(item, QUALITY_VALUE_TWO);
         } else if

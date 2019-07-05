@@ -8,7 +8,7 @@ class NormalItemUpdater extends ItemUpdater {
     }
 
     @Override
-    void setQualityForValidItem(Item item) {
+    void setQualityForValidItem() {
         if (isQualityMoreThanMinValue(item)) {
             decreaseQualityByValue(item, QUALITY_VALUE_ONE);
         }
