@@ -16,7 +16,7 @@ class AgedBrieItemUpdater extends ItemUpdater {
 
     @Override
     void setQualityForExpiredItem() {
-        if (hasItemExpired() && isQualityLessThanMaxValue()) {
+        if (isQualityLessThanMaxValue()) {
             increaseQualityByValue(QUALITY_VALUE_ONE);
         }
     }

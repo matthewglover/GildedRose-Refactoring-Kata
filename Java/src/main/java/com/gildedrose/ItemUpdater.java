@@ -17,7 +17,9 @@ abstract class ItemUpdater {
 
     final void updateItem() {
         setQualityForValidItem();
-        setQualityForExpiredItem();
+        if (hasItemExpired()) {
+            setQualityForExpiredItem();
+        }
         decreaseSellIn();
     }
 

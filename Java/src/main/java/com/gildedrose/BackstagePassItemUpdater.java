@@ -26,9 +26,7 @@ class BackstagePassItemUpdater extends ItemUpdater {
 
     @Override
     void setQualityForExpiredItem() {
-        if (hasItemExpired()) {
-            setQualityToValue(EXPIRED_QUALITY_VALUE);
-        }
+        setQualityToValue(EXPIRED_QUALITY_VALUE);
     }
 
     private boolean ifSellInIsLessThanOrEqualToTen() {

@@ -16,7 +16,7 @@ class NormalItemUpdater extends ItemUpdater {
 
     @Override
     void setQualityForExpiredItem() {
-        if (hasItemExpired() && isQualityMoreThanMinValue()) {
+        if (isQualityMoreThanMinValue()) {
             decreaseQualityByValue(QUALITY_VALUE_ONE);
         }
     }

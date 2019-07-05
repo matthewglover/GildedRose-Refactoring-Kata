@@ -12,7 +12,7 @@ public class SulfurasItemUpdater extends ItemUpdater {
 
     @Override
     void setQualityForExpiredItem() {
-        
+
     }
 
     @Override
