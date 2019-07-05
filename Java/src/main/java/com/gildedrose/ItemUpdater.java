@@ -1,11 +1,9 @@
 package com.gildedrose;
 
 abstract class ItemUpdater {
-    private static final int SELL_IN_VALUE_ZERO = 0;
-    private static final int SELL_IN_VALUE_ONE = 1;
-    private static final int QUALITY_VALUE_MIN = 0;
-    private static final int QUALITY_VALUE_MAX = 50;
-    protected final Item item;
+    private static final int MIN_QUALITY = 0;
+    private static final int MAX_QUALITY = 50;
+    private final Item item;
 
     public ItemUpdater(Item item) {
         this.item = item;
@@ -24,43 +22,43 @@ abstract class ItemUpdater {
     }
 
     void decreaseSellIn() {
-        item.sellIn -= SELL_IN_VALUE_ONE;
+        item.sellIn -= 1;
     }
 
-    final void increaseQualityByValue(int value) {
+    final void increaseQualityByValue(int n) {
         if (isQualityLessThanMaxValue()) {
-            item.quality += value;
+            item.quality += n;
         }
     }
 
-    final void decreaseQualityByValue(int value) {
+    final void decreaseQualityByValue(int n) {
         if (isQualityMoreThanMinValue()) {
-            item.quality -= value;
+            item.quality -= n;
         }
-    }
-
-    final boolean hasItemExpired() {
-        return item.sellIn <= SELL_IN_VALUE_ZERO;
-    }
-
-    final boolean isQualityMoreThanMinValue() {
-        return item.quality > QUALITY_VALUE_MIN;
     }
 
     final boolean isQualityLessThanMaxValue() {
-        return item.quality < QUALITY_VALUE_MAX;
+        return item.quality < MAX_QUALITY;
     }
 
-    final void setQualityToValue(int value) {
-        item.quality = value;
+    final void setQualityToValue(int newQuality) {
+        item.quality = newQuality;
     }
 
     final boolean isSellInLessThanOrEqualToValue(int value) {
         return item.sellIn <= value;
     }
 
-    final boolean isSellInBetweenMinAndMaxValues(int minValue, int maxValue) {
-        return !isSellInLessThanOrEqualToValue(minValue)
-                && isSellInLessThanOrEqualToValue(maxValue);
+    final boolean isSellInBetweenMinAndMaxValues(int min, int max) {
+        return !isSellInLessThanOrEqualToValue(min)
+                && isSellInLessThanOrEqualToValue(max);
+    }
+
+    private boolean hasItemExpired() {
+        return item.sellIn <= 0;
+    }
+
+    private boolean isQualityMoreThanMinValue() {
+        return item.quality > MIN_QUALITY;
     }
 }
