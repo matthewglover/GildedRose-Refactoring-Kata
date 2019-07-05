@@ -28,7 +28,9 @@ abstract class ItemUpdater {
     }
 
     final void increaseQualityByValue(int value) {
-        item.quality += value;
+        if (isQualityLessThanMaxValue()) {
+            item.quality += value;
+        }
     }
 
     final void decreaseQualityByValue(int value) {
