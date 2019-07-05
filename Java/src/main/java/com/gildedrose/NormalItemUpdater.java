@@ -1,7 +1,6 @@
 package com.gildedrose;
 
 class NormalItemUpdater extends ItemUpdater {
-    private static final int QUALITY_VALUE_ONE = 1;
 
     public NormalItemUpdater(Item item) {
         super(item);
@@ -9,11 +8,11 @@ class NormalItemUpdater extends ItemUpdater {
 
     @Override
     void setQualityForValidItem() {
-        decreaseQualityBy(QUALITY_VALUE_ONE);
+        decreaseQualityBy(1);
     }
 
     @Override
     void setQualityForExpiredItem() {
-        decreaseQualityBy(QUALITY_VALUE_ONE);
+        decreaseQualityBy(1);
     }
 }
