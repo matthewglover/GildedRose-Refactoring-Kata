@@ -9,7 +9,7 @@ public class SulfurasItemUpdaterTest {
     public void sulfurasSellInAndQualityNeverChange() {
         Item sulfuras = new Item("Sulfuras, Hand of Ragnaros", 5, 40);
 
-        new SulfurasItemUpdater().updateItem(sulfuras);
+        new SulfurasItemUpdater(sulfuras).updateItem();
 
         assertEquals(5, sulfuras.sellIn);
         assertEquals(40, sulfuras.quality);

@@ -9,11 +9,11 @@ public class ItemUpdaterFactory {
         } else if (wrapped.isAgedBrie()) {
             return new AgedBrieItemUpdater(item);
         } else if (wrapped.isBackstagePass()) {
-            return new BackstagePassItemUpdater();
+            return new BackstagePassItemUpdater(item);
         } else if (wrapped.isSulfuras()) {
-            return new SulfurasItemUpdater();
+            return new SulfurasItemUpdater(item);
         } else if (wrapped.isConjuredItem()) {
-            return new ConjuredItemUpdater();
+            return new ConjuredItemUpdater(item);
         }
         return null;
     }

@@ -8,6 +8,9 @@ class BackstagePassItemUpdater extends ItemUpdater {
     private static final int QUALITY_VALUE_TWO = 2;
     private static final int QUALITY_VALUE_THREE = 3;
 
+    public BackstagePassItemUpdater(Item item) {
+        super(item);
+    }
 
     @Override
     void setQualityForValidItem(Item item) {

@@ -5,6 +5,15 @@ abstract class ItemUpdater {
     private static final int SELL_IN_VALUE_ONE = 1;
     private static final int QUALITY_VALUE_MIN = 0;
     private static final int QUALITY_VALUE_MAX = 50;
+    private final Item item;
+
+    public ItemUpdater(Item item) {
+        this.item = item;
+    }
+
+    public void updateItem() {
+        updateItem(item);
+    }
 
     final void updateItem(Item item) {
         setQualityForValidItem(item);
