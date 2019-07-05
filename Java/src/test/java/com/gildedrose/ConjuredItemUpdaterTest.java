@@ -10,7 +10,7 @@ public class ConjuredItemUpdaterTest {
     public void qualityOfAConjuredItemDecreasesByTwo() {
         Item conjuredItem = new Item("Conjured", 1, 10);
 
-        new ConjuredItemUpdater(conjuredItem).updateItem();
+        new ConjuredItemUpdater(conjuredItem).update();
 
         assertEquals(0, conjuredItem.sellIn);
         assertEquals(8, conjuredItem.quality);
@@ -20,7 +20,7 @@ public class ConjuredItemUpdaterTest {
     public void whenTheSellByDateHasPassedTheQualityOfAConjuredItemDecreasesByFour() {
         Item conjuredItem = new Item("Conjured", 0, 10);
 
-        new ConjuredItemUpdater(conjuredItem).updateItem();
+        new ConjuredItemUpdater(conjuredItem).update();
 
         assertEquals(-1, conjuredItem.sellIn);
         assertEquals(6, conjuredItem.quality);

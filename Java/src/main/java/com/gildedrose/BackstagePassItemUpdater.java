@@ -15,25 +15,25 @@ class BackstagePassItemUpdater extends ItemUpdater {
     @Override
     void setQualityForValidItem() {
         if (ifSellInIsLessThanOrEqualToTen()) {
-            increaseQualityByValue(QUALITY_VALUE_TWO);
+            increaseQualityBy(QUALITY_VALUE_TWO);
         } else if
         (ifSellInIsLessThanOrEqualToFive()) {
-            increaseQualityByValue(QUALITY_VALUE_THREE);
+            increaseQualityBy(QUALITY_VALUE_THREE);
         } else {
-            increaseQualityByValue(QUALITY_VALUE_ONE);
+            increaseQualityBy(QUALITY_VALUE_ONE);
         }
     }
 
     @Override
     void setQualityForExpiredItem() {
-        setQualityToValue(EXPIRED_QUALITY_VALUE);
+        setQuality(EXPIRED_QUALITY_VALUE);
     }
 
     private boolean ifSellInIsLessThanOrEqualToTen() {
-        return isSellInBetweenMinAndMaxValues(SELL_IN_VALUE_FIVE, SELL_IN_VALUE_TEN) && isQualityLessThanMaxValue();
+        return isSellInWithin(SELL_IN_VALUE_FIVE, SELL_IN_VALUE_TEN) && isQualityBelowMax();
     }
 
     private boolean ifSellInIsLessThanOrEqualToFive() {
-        return isSellInLessThanOrEqualToValue(SELL_IN_VALUE_FIVE) && isQualityLessThanMaxValue();
+        return isSellInLessThanOrEqualTo(SELL_IN_VALUE_FIVE) && isQualityBelowMax();
     }
 }

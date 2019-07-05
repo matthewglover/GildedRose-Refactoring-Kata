@@ -16,6 +16,6 @@ class GildedRose {
     }
 
     private void updateItem(Item item, ItemUpdaterFactory itemUpdaterFactory) {
-      itemUpdaterFactory.createItemUpdater(item).updateItem();
+      itemUpdaterFactory.createItemUpdater(item).update();
     }
 }

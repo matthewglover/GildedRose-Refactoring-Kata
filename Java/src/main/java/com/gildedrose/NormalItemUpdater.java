@@ -9,11 +9,11 @@ class NormalItemUpdater extends ItemUpdater {
 
     @Override
     void setQualityForValidItem() {
-        decreaseQualityByValue(QUALITY_VALUE_ONE);
+        decreaseQualityBy(QUALITY_VALUE_ONE);
     }
 
     @Override
     void setQualityForExpiredItem() {
-        decreaseQualityByValue(QUALITY_VALUE_ONE);
+        decreaseQualityBy(QUALITY_VALUE_ONE);
     }
 }

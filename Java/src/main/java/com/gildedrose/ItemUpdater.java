@@ -13,9 +13,9 @@ abstract class ItemUpdater {
 
     abstract void setQualityForExpiredItem();
 
-    final void updateItem() {
+    final void update() {
         setQualityForValidItem();
-        if (hasItemExpired()) {
+        if (isExpired()) {
             setQualityForExpiredItem();
         }
         decreaseSellIn();
@@ -25,40 +25,40 @@ abstract class ItemUpdater {
         item.sellIn -= 1;
     }
 
-    final void increaseQualityByValue(int n) {
-        if (isQualityLessThanMaxValue()) {
+    final void increaseQualityBy(int n) {
+        if (isQualityBelowMax()) {
             item.quality += n;
         }
     }
 
-    final void decreaseQualityByValue(int n) {
-        if (isQualityMoreThanMinValue()) {
+    final void decreaseQualityBy(int n) {
+        if (isQualityAboveMin()) {
             item.quality -= n;
         }
     }
 
-    final boolean isQualityLessThanMaxValue() {
+    final boolean isQualityBelowMax() {
         return item.quality < MAX_QUALITY;
     }
 
-    final void setQualityToValue(int newQuality) {
-        item.quality = newQuality;
+    final void setQuality(int quality) {
+        item.quality = quality;
     }
 
-    final boolean isSellInLessThanOrEqualToValue(int value) {
-        return item.sellIn <= value;
+    final boolean isSellInLessThanOrEqualTo(int n) {
+        return item.sellIn <= n;
     }
 
-    final boolean isSellInBetweenMinAndMaxValues(int min, int max) {
-        return !isSellInLessThanOrEqualToValue(min)
-                && isSellInLessThanOrEqualToValue(max);
+    final boolean isSellInWithin(int min, int max) {
+        return !isSellInLessThanOrEqualTo(min)
+                && isSellInLessThanOrEqualTo(max);
     }
 
-    private boolean hasItemExpired() {
+    private boolean isExpired() {
         return item.sellIn <= 0;
     }
 
-    private boolean isQualityMoreThanMinValue() {
+    private boolean isQualityAboveMin() {
         return item.quality > MIN_QUALITY;
     }
 }
