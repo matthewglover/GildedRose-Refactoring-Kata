@@ -9,10 +9,6 @@ abstract class ItemUpdater {
         this.item = item;
     }
 
-    abstract void setQualityForValidItem();
-
-    abstract void setQualityForExpiredItem();
-
     abstract void updateQuality();
 
     final void update() {

@@ -8,21 +8,11 @@ class AgedBrieItemUpdater extends ItemUpdater {
     }
 
     @Override
-    void setQualityForValidItem() {
-            increaseQualityBy(QUALITY_VALUE_ONE);
-    }
-
-    @Override
-    void setQualityForExpiredItem() {
-            increaseQualityBy(QUALITY_VALUE_ONE);
-    }
-
-    @Override
     void updateQuality() {
         if (isExpired()) {
-            setQualityForExpiredItem();
+            increaseQualityBy(QUALITY_VALUE_ONE);
         } else {
-            setQualityForValidItem();
+            increaseQualityBy(QUALITY_VALUE_ONE);
         }
     }
 }

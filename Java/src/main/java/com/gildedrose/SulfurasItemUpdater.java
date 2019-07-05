@@ -7,24 +7,10 @@ public class SulfurasItemUpdater extends ItemUpdater {
     }
 
     @Override
-    void setQualityForValidItem() {
-    }
-
-    @Override
-    void setQualityForExpiredItem() {
-
-    }
-
-    @Override
     void decreaseSellIn() {
     }
 
     @Override
     void updateQuality() {
-        if (isExpired()) {
-            setQualityForExpiredItem();
-        } else {
-            setQualityForValidItem();
-        }
     }
 }
