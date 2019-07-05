@@ -7,6 +7,10 @@ public class SulfurasItemUpdater extends ItemUpdater {
     }
 
     @Override
+    void setQualityForValidItem() {
+    }
+
+    @Override
     void decreaseSellIn() {
     }
 }

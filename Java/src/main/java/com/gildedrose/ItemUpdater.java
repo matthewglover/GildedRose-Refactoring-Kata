@@ -11,14 +11,17 @@ abstract class ItemUpdater {
         this.item = item;
     }
 
+    abstract void setQualityForValidItem();
+
     final void updateItem() {
         setQualityForValidItem();
         setQualityForExpiredItem();
         decreaseSellIn();
     }
 
-    void setQualityForValidItem() {}
-    void setQualityForExpiredItem() {}
+    void setQualityForExpiredItem() {
+    }
+
     void decreaseSellIn() {
         item.sellIn -= SELL_IN_VALUE_ONE;
     }
