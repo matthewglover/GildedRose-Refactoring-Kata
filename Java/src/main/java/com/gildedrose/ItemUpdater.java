@@ -32,7 +32,9 @@ abstract class ItemUpdater {
     }
 
     final void decreaseQualityByValue(int value) {
-        item.quality -= value;
+        if (isQualityMoreThanMinValue()) {
+            item.quality -= value;
+        }
     }
 
     final boolean hasItemExpired() {
