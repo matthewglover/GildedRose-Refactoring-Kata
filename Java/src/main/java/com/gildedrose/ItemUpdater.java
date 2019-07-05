@@ -11,11 +11,7 @@ abstract class ItemUpdater {
         this.item = item;
     }
 
-    public void updateItem() {
-        updateItem(item);
-    }
-
-    final void updateItem(Item item) {
+    final void updateItem() {
         setQualityForValidItem(item);
         setQualityForExpiredItem(item);
         decreaseSellIn(item);
