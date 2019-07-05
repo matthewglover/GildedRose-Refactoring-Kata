@@ -5,7 +5,7 @@ public class ItemUpdaterFactory {
         ItemWrapper wrapped = new ItemWrapper(item);
 
         if (wrapped.isNormalItem()) {
-            return new NormalItemUpdater();
+            return new NormalItemUpdater(item);
         } else if (wrapped.isAgedBrie()) {
             return new AgedBrieItemUpdater(item);
         } else if (wrapped.isBackstagePass()) {

@@ -10,7 +10,7 @@ public class NormalItemUpdaterTest {
     public void qualityOfANormalItemDecreasesByOne() {
         Item normalItem = new Item("Normal Item", 1, 10);
 
-        new NormalItemUpdater().updateItem(normalItem);
+        new NormalItemUpdater(normalItem).updateItem();
 
         assertEquals(0, normalItem.sellIn);
         assertEquals(9, normalItem.quality);
@@ -20,7 +20,7 @@ public class NormalItemUpdaterTest {
     public void whenTheSellByDateHasPassedTheQualityDecreasesByTwo() {
         Item normalItem = new Item("Normal Item", 0, 10);
 
-        new NormalItemUpdater().updateItem(normalItem);
+        new NormalItemUpdater(normalItem).updateItem();
 
         assertEquals(-1, normalItem.sellIn);
         assertEquals(8, normalItem.quality);
