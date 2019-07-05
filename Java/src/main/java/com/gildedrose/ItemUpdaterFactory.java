@@ -7,7 +7,7 @@ public class ItemUpdaterFactory {
         if (wrapped.isNormalItem()) {
             return new NormalItemUpdater();
         } else if (wrapped.isAgedBrie()) {
-            return new AgedBrieItemUpdater();
+            return new AgedBrieItemUpdater(item);
         } else if (wrapped.isBackstagePass()) {
             return new BackstagePassItemUpdater();
         } else if (wrapped.isSulfuras()) {

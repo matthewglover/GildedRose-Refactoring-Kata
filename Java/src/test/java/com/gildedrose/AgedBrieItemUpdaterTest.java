@@ -9,7 +9,7 @@ public class AgedBrieItemUpdaterTest {
     public void agedBrieIncreaseInQuality() {
         Item agedBrie = new Item("Aged Brie", 5, 49);
 
-        new AgedBrieItemUpdater().updateItem(agedBrie);
+        new AgedBrieItemUpdater(agedBrie).updateItem();
 
         assertEquals(50, agedBrie.quality);
     }
@@ -18,7 +18,7 @@ public class AgedBrieItemUpdaterTest {
     public void qualityNeverMoreThanFifty() {
         Item agedBrie = new Item("Aged Brie", 5, 50);
 
-        new AgedBrieItemUpdater().updateItem(agedBrie);
+        new AgedBrieItemUpdater(agedBrie).updateItem();
 
         assertEquals(50, agedBrie.quality);
     }
