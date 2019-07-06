@@ -11,11 +11,11 @@ class BackstagePass extends BaseItem {
         if (isExpired()) {
             setQuality(0);
         } else {
-            setQualityForValidItem();
+            updateQualityForValidItem();
         }
     }
 
-    private void setQualityForValidItem() {
+    private void updateQualityForValidItem() {
         if (sellIn() <= 5) {
             increaseQualityBy(3);
         } else if (sellIn() <= 10) {
