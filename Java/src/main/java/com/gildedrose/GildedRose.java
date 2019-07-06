@@ -8,7 +8,7 @@ class GildedRose {
     private final List<UpdateableItem> items;
 
     GildedRose(Item[] rawItems) {
-        ItemUpdaterFactory factory = new ItemUpdaterFactory();
+        UpdateableItemFactory factory = new UpdateableItemFactory();
 
         this.items = Arrays.asList(rawItems).stream()
                 .map(factory::createItemUpdater)

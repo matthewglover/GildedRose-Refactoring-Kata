@@ -1,9 +1,9 @@
 package com.gildedrose;
 
-class AgedBrieItemUpdater extends BaseItem {
+class AgedBrie extends BaseItem {
     private static final int QUALITY_VALUE_ONE = 1;
 
-    public AgedBrieItemUpdater(Item item) {
+    public AgedBrie(Item item) {
         super(item);
     }
 

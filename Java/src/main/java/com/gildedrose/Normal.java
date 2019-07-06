@@ -1,8 +1,8 @@
 package com.gildedrose;
 
-class NormalItemUpdater extends BaseItem {
+class Normal extends BaseItem {
 
-    public NormalItemUpdater(Item item) {
+    public Normal(Item item) {
         super(item);
     }
 
