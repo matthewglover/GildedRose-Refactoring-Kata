@@ -1,21 +1,21 @@
 package com.gildedrose;
 
-class GildedRose {
-    private final Item[] items;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
-    GildedRose(Item[] items) {
-        this.items = items;
+class GildedRose {
+    private final List<UpdateableItem> items;
+
+    GildedRose(Item[] rawItems) {
+        UpdateableItemFactory factory = new UpdateableItemFactory();
+
+        this.items = Arrays.asList(rawItems).stream()
+                .map(factory::createItemUpdater)
+                .collect(Collectors.toList());
     }
 
     void updateQuality() {
-        ItemUpdaterFactory itemUpdaterFactory = new ItemUpdaterFactory();
-
-        for (Item item : items) {
-            updateItem(item, itemUpdaterFactory);
-        }
-    }
-
-    private void updateItem(Item item, ItemUpdaterFactory itemUpdaterFactory) {
-      itemUpdaterFactory.createItemUpdater(item).updateItem(item);
+        items.forEach(UpdateableItem::update);
     }
 }
