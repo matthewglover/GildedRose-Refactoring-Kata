@@ -10,9 +10,7 @@ public class ItemWrapperTest {
         Item item = new Item("Aged Brie", 1, 1);
         ItemWrapper wrapped = new ItemWrapper(item);
 
-        assertTrue(wrapped.isAgedBrie());
-        assertFalse(wrapped.isSulfuras());
-        assertFalse(wrapped.isBackstagePass());
+        assertEquals(ItemType.AGED_BRIE, wrapped.type());
     }
 
     @Test
@@ -20,9 +18,7 @@ public class ItemWrapperTest {
         Item item = new Item("Sulfuras, Hand of Ragnaros", 1, 1);
         ItemWrapper wrapped = new ItemWrapper(item);
 
-        assertTrue(wrapped.isSulfuras());
-        assertFalse(wrapped.isAgedBrie());
-        assertFalse(wrapped.isBackstagePass());
+        assertEquals(ItemType.SULFURAS, wrapped.type());
     }
 
     @Test
@@ -30,9 +26,7 @@ public class ItemWrapperTest {
         Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 1, 1);
         ItemWrapper wrapped = new ItemWrapper(item);
 
-        assertTrue(wrapped.isBackstagePass());
-        assertFalse(wrapped.isSulfuras());
-        assertFalse(wrapped.isAgedBrie());
+        assertEquals(ItemType.BACKSTAGE_PASS, wrapped.type());
     }
 
     @Test
@@ -40,10 +34,7 @@ public class ItemWrapperTest {
         Item item = new Item("Normal Item", 1, 1);
         ItemWrapper wrapped = new ItemWrapper(item);
 
-        assertTrue(wrapped.isNormalItem());
-        assertFalse(wrapped.isBackstagePass());
-        assertFalse(wrapped.isSulfuras());
-        assertFalse(wrapped.isAgedBrie());
+        assertEquals(ItemType.NORMAL, wrapped.type());
     }
 
     @Test
@@ -51,10 +42,6 @@ public class ItemWrapperTest {
         Item item = new Item("Conjured", 1, 1);
         ItemWrapper wrapped = new ItemWrapper(item);
 
-        assertTrue(wrapped.isConjuredItem());
-        assertFalse(wrapped.isBackstagePass());
-        assertFalse(wrapped.isSulfuras());
-        assertFalse(wrapped.isAgedBrie());
-        assertFalse(wrapped.isNormalItem());
+        assertEquals(ItemType.CONJURED, wrapped.type());
     }
 }

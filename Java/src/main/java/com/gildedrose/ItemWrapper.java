@@ -7,23 +7,33 @@ class ItemWrapper {
         this.item = item;
     }
 
-    public boolean isAgedBrie() {
+    public ItemType type() {
+        if (isAgedBrie()) {
+            return ItemType.AGED_BRIE;
+        } else if (isSulfuras()) {
+            return ItemType.SULFURAS;
+        } else if (isBackstagePass()) {
+            return ItemType.BACKSTAGE_PASS;
+        } else if (isConjuredItem()) {
+            return ItemType.CONJURED;
+        } else {
+            return ItemType.NORMAL;
+        }
+    }
+
+    private boolean isAgedBrie() {
        return item.name.equals("Aged Brie");
     }
 
-    public boolean isSulfuras() {
+    private boolean isSulfuras() {
         return item.name.equals("Sulfuras, Hand of Ragnaros");
     }
 
-    public boolean isBackstagePass() {
+    private boolean isBackstagePass() {
         return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
     }
 
-    public boolean isConjuredItem() {
+    private boolean isConjuredItem() {
         return item.name.equals("Conjured");
-    }
-
-    public boolean isNormalItem() {
-        return !isAgedBrie() && !isBackstagePass() && !isSulfuras() && !isConjuredItem();
     }
 }

@@ -4,17 +4,12 @@ public class ItemUpdaterFactory {
     public ItemUpdater createItemUpdater(Item item) {
         ItemWrapper wrapped = new ItemWrapper(item);
 
-        if (wrapped.isNormalItem()) {
-            return new NormalItemUpdater(item);
-        } else if (wrapped.isAgedBrie()) {
-            return new AgedBrieItemUpdater(item);
-        } else if (wrapped.isBackstagePass()) {
-            return new BackstagePassItemUpdater(item);
-        } else if (wrapped.isSulfuras()) {
-            return new SulfurasItemUpdater(item);
-        } else if (wrapped.isConjuredItem()) {
-            return new ConjuredItemUpdater(item);
+        switch (wrapped.type()) {
+            case AGED_BRIE: return new AgedBrieItemUpdater(item);
+            case CONJURED: return new ConjuredItemUpdater(item);
+            case BACKSTAGE_PASS: return new BackstagePassItemUpdater(item);
+            case SULFURAS: return new SulfurasItemUpdater(item);
+            default: return new NormalItemUpdater(item);
         }
-        return null;
     }
 }
