@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 class GildedRose {
-    private final List<ItemUpdater> items;
+    private final List<UpdateableItem> items;
 
     GildedRose(Item[] rawItems) {
         ItemUpdaterFactory factory = new ItemUpdaterFactory();
@@ -16,6 +16,6 @@ class GildedRose {
     }
 
     void updateQuality() {
-        items.forEach(ItemUpdater::update);
+        items.forEach(UpdateableItem::update);
     }
 }

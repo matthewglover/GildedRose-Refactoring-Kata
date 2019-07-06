@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-abstract class ItemUpdater {
+abstract class ItemUpdater implements UpdateableItem {
     private static final int MIN_QUALITY = 0;
     private static final int MAX_QUALITY = 50;
     private final Item item;
@@ -11,7 +11,8 @@ abstract class ItemUpdater {
 
     abstract void updateQuality();
 
-    final void update() {
+    @Override
+    public final void update() {
         updateQuality();
         decreaseSellIn();
     }
