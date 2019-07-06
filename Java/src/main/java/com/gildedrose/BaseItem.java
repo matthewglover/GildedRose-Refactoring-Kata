@@ -1,11 +1,11 @@
 package com.gildedrose;
 
-abstract class ItemUpdater implements UpdateableItem {
+abstract class BaseItem implements UpdateableItem {
     private static final int MIN_QUALITY = 0;
     private static final int MAX_QUALITY = 50;
     private final Item item;
 
-    public ItemUpdater(Item item) {
+    public BaseItem(Item item) {
         this.item = item;
     }
 

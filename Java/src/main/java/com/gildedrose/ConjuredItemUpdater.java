@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-class ConjuredItemUpdater extends ItemUpdater {
+class ConjuredItemUpdater extends BaseItem {
 
     public ConjuredItemUpdater(Item item) {
         super(item);
